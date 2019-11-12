@@ -6,7 +6,7 @@ Référez-vous à la documentation à télécharger sur votres espace client.
 
 ## Installation du plugin
 
-Récupérez dans le fichier **code.html** le code à inclure entre les balises `<head>` et `</head>` de votre site (ou au moins de la page qui accueillera le formulaire) ainsi qu'une ligne à insérer à l'endroit de votre page où s'affichera le formulaire.
+Récupérez dans le fichier `code.html` le code à inclure entre les balises `<head>` et `</head>` de votre site (ou au moins de la page qui accueillera le formulaire) ainsi qu'une ligne à insérer à l'endroit de votre page où s'affichera le formulaire.
 
 ## Paramétrage du formulaire
 
