@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Demo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <script src="vendor/js/jquery-3.4.1.min.js"></script>
+  <script src="vendor/js/jquery-ui.min.js"></script>
+  <script src="vendor/js/popper.min.js"></script>
+  <script src="vendor/js/bootstrap.min.js"></script>
+  <link rel="icon" type="image/png" href="favicon.ico" />
+  <link rel="stylesheet" href="vendor/css/bootstrap.css" />
+  <link rel="stylesheet" href="dist/css/jquery.serca-form.min.css" />
+
+  <link rel="stylesheet" href="vendor/css/font-awesome.min.css">
+  <script src="dist/js/jquery.serca-form.min.js"></script>
+  <script src="dist/js/header.min.js"></script>
+  <script src="dist/js/jquery.dqemail.min.js"></script>
+  <script src="dist/js/jquery.dqephone.min.js"></script>
+
+  <script type="application/javascript">
+
+    $(document).ready(function() {
+      $("#serca-form").sercaForm({
+        backColor: "#f7f7f9",
+        autocompleteListStyle: "small",
+        nbDisplayedResults: 5,
+        fullAddressCopyOrder: "address_row1;address_row2;address_row3;address_row4;address_row5;address_row6",
+        oneFieldAddressRow1: false,
+        orderFieldAddressRow1: "last_name;first_name",
+        displayAddressLabel: true,
+        upperCaseFields: true,
+        lockFormRow6: true,
+        maxRetries: 5,
+        maxRetriesTimeout: 10000,
+        ajaxTimeout: 3000
+      });
+    });
+    
+  </script>
+
+  <style>
+    main {
+      margin: 10px;
+    }
+
+    #serca-form {
+      height: 100%;
+      max-width: 1024px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body style="background-color: #F1F1F1;">
+
+  <main>
+    <div id="serca-form" class="shadow rounded"></div>
+  </main>
+
+</body>
+
+
+
+</html>

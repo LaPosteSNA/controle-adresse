@@ -1,0 +1,466 @@
+
+#serca-form{
+    display: flex;
+    background-color: #fff;
+    height: auto;
+}
+
+#row8_message {
+	margin-bottom: 23px;
+}
+
+.form-space{
+	margin-bottom:40px;
+}
+
+.containerca{
+	width: 100%;
+    margin: auto;
+    padding: 1em;
+}
+
+
+#address-autocomplete-form .col-form-label {
+    z-index: 100;
+    text-align: left;
+}
+
+#address-autocomplete-form {
+    margin-top: 0;
+    width: 100%;
+    background-color: #f7f7f9;
+}
+
+@media (min-width: 768px) {
+    #address-autocomplete-form .col-form-label {
+        text-align: right;
+    }
+    #address-autocomplete-form {
+        margin-top: 40px;
+        padding: 20px;
+        width: 90%;
+    }
+}
+
+@media (min-width: 992px) {
+    #address-autocomplete-form {
+        width: 70%;
+    }
+}
+
+@media (min-width: 992px) {
+	.col-form-label {
+		text-align: right;
+	}
+}
+
+@media (min-width: 768px) {
+#address_row0_label{
+		padding-right: 15px;
+		margin-top: 5px;
+	}
+}
+
+.form-control.is-valid {
+    border-color: #32CD32;
+}
+.form-control.is-invalid {
+    border-color: #FF0000;
+}
+
+.form-control.is-warning:focus{
+	box-shadow : 0 0 0 0.2rem #ffe4b2;
+}
+.form-control.is-warning {
+    border-color: #FFA500;
+}
+.form-control.is-valid,
+.form-control.is-invalid,
+.form-control.is-warning {
+	background-color: #FFFFFF !important;
+}
+
+.form-control:disabled {
+    cursor: not-allowed;
+		background-color: #fafafa;
+}
+
+.form-control:disabled::placeholder{
+	                color: rgba(73, 80, 87, 0.5);
+}
+
+.form-control{
+	background-color: #fff;
+	background-image: none !important;
+}
+
+.form-control.empty:not(:focus):not(:disabled){
+	background-color: #f3f3f3;
+}
+
+
+.feedback-icon {
+	display: none;
+}
+
+
+
+.form-control.is-invalid  ~ .invalid-feedback.feedback-icon,
+.form-control.is-warning ~ .warning-feedback.feedback-icon,
+.form-control.is-valid ~ .valid-feedback.feedback-icon {
+	display: block;
+}
+
+.valid-feedback.feedback-icon{
+    position: absolute;
+    width: auto;
+    bottom: 10px;
+    right: 20px;
+    margin-top: 0;
+		color: #28a745;
+}
+.invalid-feedback.feedback-icon {
+    position: absolute;
+    width: auto;
+    bottom: 12px;
+    right: 20px;
+    margin-top: 0;
+		color: #FF0000;
+}
+
+.invalid-feedback.feedback-icon {
+    position: absolute;
+    width: auto;
+    margin-top: 0;
+		color: #FF0000;
+		font-size: 1rem;
+    font-weight: normal;
+}
+
+.warning-feedback.feedback-icon  {
+    position: absolute;
+    width: auto;
+    bottom: 5px;
+    right: 20px;
+    margin-top: 0;
+		color: #FFA500;
+}
+
+.ui-autocomplete {
+    position: absolute;
+    z-index: 1000;
+    margin-top: 2px;
+    padding: 0px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    cursor: default;
+}
+
+.ui-autocomplete>li.ui-state-focus {
+    /* masque les placeholder en cas de focus sur le champ */
+    background-color: rgba(0, 0, 0, .06);
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+input:focus:-moz-placeholder {
+    color: transparent;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-state-active.ui-button:hover {
+    background: rgba(0, 0, 0, .06) !important;
+}
+
+.address-autocomplete-result-list-style-empty {
+    content: "";
+}
+
+.information{
+	text-align:right;
+}
+#btn_clear{
+	background-color:white;
+	border-color: white;
+	color: black;
+	font-size: 1rem;
+	font-size: 1.2rem;
+}
+#controler_votre_adresse{
+	background-color:#31CD30;
+	border-color:white;
+
+}
+#btn_clear:focus{
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0);
+}
+
+#btn_validate, #btn_clear, #controler_votre_adresse, #btn_clear {
+    margin: 5px;
+}
+
+ .form-check-input{
+	width: 23px;
+	height: 23px;
+	border: 1px solid #ddd;
+  margin-top: 0rem;
+	margin-left: 0rem;
+}
+
+.ui-menu-item-wrapper {
+    padding: .5rem .75rem;
+}
+
+.ui-menu-item {
+    border-bottom: 1px solid rgba(0, 0, 0, .06);
+}
+
+.ui-menu .ui-menu-item a,
+.ui-autocomplete>li:hover {
+    cursor: pointer;
+}
+
+.center-aligned {
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+		float:right;
+}
+
+.footer-autocomplete {
+    text-align: right !important;
+}
+
+.wrapper {
+    position: relative;
+    z-index: 1000 !important;
+    display: none;
+    min-height: auto;
+    height: 326px;
+    text-align: center;
+    -webkit-transition: top 1s;
+    -moz-transition: top 1s;
+    -o-transition: top 1s;
+    transition: top 1s;
+}
+
+#fullAddress {
+    display: grid;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    margin: auto;
+    padding-top: 123px;
+    padding-bottom: 100px;
+    padding-left: 70px;
+    max-width: 400px;
+    vertical-align: bottom;
+    line-height: 10px;
+}
+
+#fullAddress div:after {
+    width: 100%;
+    content: '';
+    line-height: 10px;
+}
+
+.text {
+    position: relative;
+    top: -330px;
+    right: 0;
+    /*position: absolute;*/
+    bottom: 0;
+    left: 0;
+    color: #000;
+    text-align: left;
+    white-space: pre;
+    justify-content: left;
+    align-items: left;
+}
+
+.loading {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+}
+
+.hide{
+	display:none !important;
+}
+
+div[id='fullAddress']>div {
+    margin-right: auto;
+    margin-left: 0;
+    /*margin:auto;*/
+    max-width: 540px;
+    width: auto;
+    line-height: normal;
+    border: 1px transparent solid;
+}
+
+div[id='fullAddress']>div[class='row']>div:hover {
+    border: 1px black solid;
+    background-color: #e0a800;
+}
+
+div[id='fullAddress']>div:not(.row):hover {
+    border: 1px black solid;
+    background-color: #e0a800;
+}
+
+div[id='fullAddress']>div:active {
+    background-color: darkgray;
+    border: 1px transparent solid;
+}
+
+.copied {
+    border: 1px #333333 dashed !important;
+    background-color: whitesmoke !important;
+}
+
+#btn_copy {
+    float: right;
+}
+
+@font-face {
+    font-family: 'ACustomFont';
+    src: url('../../vendor/fonts/GSR.ttf');
+}
+
+* {
+    font-family: 'ACustomFont', 'Google Sans', 'Segoe UI', Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 496px;
+    min-height: 100vh;
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#address-autocomplete-form {
+    -webkit-box-shadow: 5px 5px 10px 5px #000000;
+    -moz-box-shadow: 5px 5px 10px 5px #000000;
+    box-shadow: 5px 5px 10px 5px #000000;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=134, Strength=10);
+    -o-box-shadow: 5px 5px 10px 5px #000000;
+}
+
+.centerBlock {
+    display: table;
+    margin: auto;
+    background-size: contain;
+    text-align: center;
+    align-content: center;
+}
+
+.section_centrale {
+    height: 326px;
+    background: url("../../images/envelop_result.png") no-repeat center;
+    background-size: contain;
+    text-align: center;
+    align-content: center;
+}
+
+.color_red {
+    color: red;
+}
+
+
+.form_bck_red {
+    background-color: red;
+}
+
+input.uppercase {
+    text-transform: uppercase;
+}
+
+footer {
+    background-color: transparent;
+    text-shadow: 2px 2px 3px #888888;
+}
+
+footer>span>i {
+    color: #e0a800;
+}
+
+footer>span>i>a:visited {
+    color: gray;
+}
+
+footer>span>i>a:not(:visited) {
+    color: yellow;
+}
+
+#address_row1_civ {
+    width: 120px;
+}
+
+.gender_male.active,
+.gender_female.active {
+    background-color: #a2ffa1 !important;
+    color: black;
+}
+
+.gender_male.active::before,
+.gender_female.active::before {
+
+    content: "\002705";
+}
+
+#helptuto {
+    float: right;
+}
+
+.address-autocomplete-result-list-style-small .text-muted {
+    color: gray !important;
+}
+
+.address-autocomplete-result-list-style-small .text-focus {
+    color: orangered !important;
+}
+
+.address-autocomplete-result-list-style-small strong {
+    color: green !important;
+}
+
+.form-group.row > div {
+    margin: auto 0;
+}
+
+.form-check > * {
+    cursor: pointer;
+}
