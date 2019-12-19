@@ -433,7 +433,7 @@ if (typeof jQuery === 'undefined') {
     var html = '';
     var htmlCodeAddressRow1 = '';
     if ("bootstrap4" === options.ihmModelAndVersion) {
-      html = '<form id="address-autocomplete-formu" class="containerca p-5" autocomplete="off" action="" method="POST">\n' +
+      html = '<form id="address-autocomplete-form" class="containerca p-5" autocomplete="off" action="" method="POST">\n' +
         $.fn.setOptionTitle(options.title);
 
       var htmlCodeGender =
@@ -886,9 +886,7 @@ if (typeof jQuery === 'undefined') {
     document.execCommand("copy");
     $temp.remove();
   };
-  $.fn.toggleShow = function() {
-    $('.wrapper').toggleClass('show');
-  };
+ 
   $.fn.findWord = function(word) {
     var words = ['APPT', 'ESC'];
     var final_words = ['APPARTEMENT', 'ESCALIER'];
