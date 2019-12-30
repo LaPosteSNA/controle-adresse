@@ -2,7 +2,7 @@
 
 ## Installation de vos identifiants
 
-Référez-vous à la documentation à télécharger sur votres espace client.
+Le présent formulaire ne fonctionnera sans un abonnement a **Contrôle Adresse**. Référez-vous à la documentation disponible sur votre espace client pour intégrer votre identifiant au plugin.
 
 ## Installation du plugin
 
