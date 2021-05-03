@@ -2,7 +2,7 @@ if (typeof jQuery === 'undefined') {
   throw new Error('Le plugin "sercaForm" nécessite jQuery!');
 }
 
-(function($) {
+(function ($) {
   'use strict';
   var options;
 
@@ -36,7 +36,7 @@ if (typeof jQuery === 'undefined') {
 
     if (typeOfReturn == "address_row6") {
 
-      addressResult = dataLimitedToNbDisplayedResults.map(function(item) {
+      addressResult = dataLimitedToNbDisplayedResults.map(function (item) {
         return {
           value: item.ligne6.codePostal + " " + item.ligne6.libelleAcheminement,
           highlightedResult: $.fn.getHighlightedResult(item.cea, typeOfReturn, item, options),
@@ -54,7 +54,7 @@ if (typeof jQuery === 'undefined') {
     }
     if (typeOfReturn == "address_row5") {
 
-      addressResult = dataLimitedToNbDisplayedResults.map(function(item) {
+      addressResult = dataLimitedToNbDisplayedResults.map(function (item) {
         return {
           value: item.ligne6.codePostal + " " + item.ligne6.libelleAcheminement,
           highlightedResult: $.fn.getHighlightedResult(item.cea, typeOfReturn, item, options),
@@ -72,7 +72,7 @@ if (typeof jQuery === 'undefined') {
     }
     if (typeOfReturn == "address_row4") {
       villesMultiCP = $.fn.analyseIsMultiCP(dataLimitedToNbDisplayedResults);
-      addressResult = dataLimitedToNbDisplayedResults.map(function(item) {
+      addressResult = dataLimitedToNbDisplayedResults.map(function (item) {
         return {
           value: item.ligne4.libelle,
           highlightedResult: $.fn.getHighlightedResult(item.cea, typeOfReturn, item, options),
@@ -90,7 +90,7 @@ if (typeof jQuery === 'undefined') {
     }
     if (typeOfReturn == "address_row3") {
 
-      addressResult = dataLimitedToNbDisplayedResults.map(function(item) {
+      addressResult = dataLimitedToNbDisplayedResults.map(function (item) {
         if (item.ligne3 !== undefined) {
           return {
             value: item.ligne3.libelle,
@@ -122,7 +122,7 @@ if (typeof jQuery === 'undefined') {
     }
     if (typeOfReturn == "address_row8") {
 
-      addressResult = dataLimitedToNbDisplayedResults.map(function(item) {
+      addressResult = dataLimitedToNbDisplayedResults.map(function (item) {
         return {
           value: item,
           highlightedResult: $.fn.getHighlightedResult(item.cea, typeOfReturn, item, options),
@@ -248,45 +248,45 @@ if (typeof jQuery === 'undefined') {
           var row2 = $("#address_row2");
 
           var retourDesFeux = [{
-              feu: dataFilterToNbFeu.ligne6.feu,
-              row: row6
-            },
-            {
-              feu: dataFilterToNbFeu.ligne5.feu,
-              row: row5
-            },
-            {
-              feu: dataFilterToNbFeu.ligne4.feu,
-              row: row4
-            },
-            {
-              feu: dataFilterToNbFeu.ligne3.feu,
-              row: row3
-            },
-            {
-              feu: dataFilterToNbFeu.ligne2.feu,
-              row: row2
-            }
+            feu: dataFilterToNbFeu.ligne6.feu,
+            row: row6
+          },
+          {
+            feu: dataFilterToNbFeu.ligne5.feu,
+            row: row5
+          },
+          {
+            feu: dataFilterToNbFeu.ligne4.feu,
+            row: row4
+          },
+          {
+            feu: dataFilterToNbFeu.ligne3.feu,
+            row: row3
+          },
+          {
+            feu: dataFilterToNbFeu.ligne2.feu,
+            row: row2
+          }
           ];
 
-          retourDesFeux.forEach(function(retourDuFeu) {
-            if(retourDuFeu.row.val() !== ""){
-            switch (retourDuFeu.feu) {
+          retourDesFeux.forEach(function (retourDuFeu) {
+            if (retourDuFeu.row.val() !== "") {
+              switch (retourDuFeu.feu) {
 
-              case "-2":
-                retourDuFeu.row.addClass('is-invalid');
-                break;
+                case "-2":
+                  retourDuFeu.row.addClass('is-invalid');
+                  break;
 
-              case "-1":
-                retourDuFeu.row.addClass('is-warning');
-                break;
+                case "-1":
+                  retourDuFeu.row.addClass('is-warning');
+                  break;
 
-              case "0":
-                retourDuFeu.row.addClass('is-valid');
-                break;
+                case "0":
+                  retourDuFeu.row.addClass('is-valid');
+                  break;
 
+              }
             }
-          }
           });
 
         }
@@ -343,9 +343,9 @@ if (typeof jQuery === 'undefined') {
         if (searchedAddress == "")
           searchedAddress = $("#address_row4").attr("numext") + " " + $("#address_row4").attr("voie");
         url = url.replace("%strSearch%", searchedAddress);
-        url = url.replace("%strlibVoie%", $("#address_row4").attr("voie"));
-        url = url.replace("%strNumExt%", $("#address_row4").attr("numext"));
-        url = url.replace("%strLibAch%", $("#address_row6").attr("libelle_acheminement"));
+        url = url.replace("%strlibVoie%", $("#address_row4").attr("voie") || "");
+        url = url.replace("%strNumExt%", $("#address_row4").attr("numext") || "");
+        url = url.replace("%strLibAch%", $("#address_row6").attr("libelle_acheminement") || "");
 
         return url;
 
@@ -408,8 +408,8 @@ if (typeof jQuery === 'undefined') {
           htmlHighlightedResult += ', <span class="text-muted">' + item.ligne6.codePostal + " " + item.ligne6.libelleAcheminement + "</span>";
         }
       } else if ((item.ligne6.libelleAcheminement === "PARIS" ||
-          item.ligne6.libelleAcheminement === "LYON" ||
-          item.ligne6.libelleAcheminement === "MARSEILLE") || (villesMultiCP.indexOf(item.ligne6.libelleAcheminement) != -1)) {
+        item.ligne6.libelleAcheminement === "LYON" ||
+        item.ligne6.libelleAcheminement === "MARSEILLE") || (villesMultiCP.indexOf(item.ligne6.libelleAcheminement) != -1)) {
         htmlHighlightedResult += '<br/><span class="text-muted">' +
           item.ligne6.codePostal +
           " " +
@@ -464,14 +464,14 @@ if (typeof jQuery === 'undefined') {
         var labelAddressRow1 = "";
         if (options.orderFieldAddressRow1 == "first_name;last_name")
           labelAddressRow1 = '<label id="address_row1_firstname_label" for="address_row1_first_name" class=" col-form-label">Prénom</label>' +
-          ' - ' +
-          '<label id="address_row1_lastname_name_label" for="address_row1_last_name" class="col-form-label">Nom</label> :';
+            ' - ' +
+            '<label id="address_row1_lastname_name_label" for="address_row1_last_name" class="col-form-label">Nom</label> :';
 
         else
           labelAddressRow1 =
-          '<label id="address_row1_lastname_name_label" for="address_row1_last_name">Nom </label>' +
-          ' - ' +
-          '<label id="address_row1_firstname_label" for="address_row1_first_name">Prénom <font color="red">*</font></label> :';
+            '<label id="address_row1_lastname_name_label" for="address_row1_last_name">Nom </label>' +
+            ' - ' +
+            '<label id="address_row1_firstname_label" for="address_row1_first_name">Prénom </label> :';
 
         htmlCodeAddressRow1 =
           '<div class="form-group row form-space">\n' +
@@ -523,7 +523,7 @@ if (typeof jQuery === 'undefined') {
         '   </div>\n' +
         '</div>\n' +
         '<div class="form-group row form-space has-feedback">\n' +
-        '    <label id="address_row4_label" for="address_row4" class="col-md-4 col-form-label">Numéro et Nom de la voie <font color="red">*</font> :</label>\n' +
+        '    <label id="address_row4_label" for="address_row4" class="col-md-4 col-form-label">Numéro et Nom de la voie :</label>\n' +
         '    <div class="col-md-8">\n' +
         '        <input type="input" tabindex="4" class="form-control" id="address_row4" name="address_row4" maxlength="38" aria-describedby="Numéro et nom de la voie" placeholder="Ex : 3 rue des lilas" autocomplete="off"><i class="fa fa-circle-o-notch fa-spin text-primary hide loading" aria-hidden="true"></i>\n' +
         '        <div id="address_row4Help" class="invalid-feedback"></div>\n' +
@@ -604,13 +604,13 @@ if (typeof jQuery === 'undefined') {
 
         '</div>\n' +
 
-                '<div class="form-group form-space row has-feedback m-0">\n' +
-                '    <div class="col-md-12 d-flex flex-row-reverse flex-wrap justify-content-start">\n' +
-                '        <button class="btn  btn-secondary font-weight-bold btn-lg float-center" style="float:right" disabled tabindex="7" title="Effectue une RNVP sur la l\'adresse saisie\net affiche des indicateurs en retour." id="btn_validate" type="submit">VALIDER VOTRE SAISIE</button>\n' +
-                '		 <button class="btn btn-success btn-lg font-weight-bold float-center" style="float:right" disabled type="button" id="controler_votre_adresse" title="Controler votre addresse." >CONTRÔLER VOTRE ADRESSE</button>\n' +
-                '        <button class="btn float-center" type="reset" id="btn_clear" style="float:right;" title="Efface le contenu du formulaire."><i class="fas fa-redo"></i>&nbsp;&nbsp;EFFACER</button>\n' +
-                '        <button class="btn btn-primary" tabindex="8" type="button" id="btn_copy" role="WholeAdrClipboard" title="Copie l\'adresse dans le presse-papier." class="collapse">Copier l\'adresse complète</button>\n' +
-                '    </div>\n' +
+        '<div class="form-group form-space row has-feedback m-0">\n' +
+        '    <div class="col-md-12 d-flex flex-row-reverse flex-wrap justify-content-start">\n' +
+        '        <button class="btn  btn-secondary font-weight-bold btn-lg float-center" style="float:right" disabled tabindex="7" id="btn_validate" type="submit">VALIDER VOTRE SAISIE</button>\n' +
+        '		 <button class="btn btn-success btn-lg font-weight-bold float-center" style="float:right" disabled type="button" id="controler_votre_adresse" >CONTRÔLER VOTRE ADRESSE</button>\n' +
+        '        <button class="btn float-center" type="reset" id="btn_clear" style="float:right;" title="Efface le contenu du formulaire."><i class="fas fa-redo"></i>&nbsp;&nbsp;EFFACER</button>\n' +
+        '        <button class="btn btn-primary" tabindex="8" type="button" id="btn_copy" role="WholeAdrClipboard" title="Copie l\'adresse dans le presse-papier." class="collapse">Copier l\'adresse complète</button>\n' +
+        '    </div>\n' +
 
         '</div>\n' +
         '</form>\n';
@@ -620,14 +620,14 @@ if (typeof jQuery === 'undefined') {
     return html;
   };
 
-  $.fn.updateFinal = function() {
+  $.fn.updateFinal = function () {
     var strcb = "";
     var address = {};
 
 
     if (options.upperCaseFields) {
-      $('form').find("input[type=input], input[type=password], textarea").each(function() {
-        $(":input").each(function() {
+      $('form').find("input[type=input], input[type=password], textarea").each(function () {
+        $(":input").each(function () {
           this.value = this.value.toUpperCase();
         });
       });
@@ -685,7 +685,7 @@ if (typeof jQuery === 'undefined') {
     return strcb.toUpperCase();
   };
 
-  $.fn.getTypeAddressRow4 = function(commune) {
+  $.fn.getTypeAddressRow4 = function (commune) {
 
     var communes_arrondissements = ["PARIS", "LYON", "MARSEILLE"];
     var typeAddressRow4 = "";
@@ -697,71 +697,74 @@ if (typeof jQuery === 'undefined') {
     return typeAddressRow4;
   };
 
-  $.fn.AjaxRetry = function(params, callback) {
+  $.fn.AjaxRetry = function (params, callback) {
 
-    var timeOutId = window.setTimeout(function() {}, 0);
+    var timeOutId = window.setTimeout(function () { }, 0);
     while (timeOutId--) {
       window.clearTimeout(timeOutId);
     }
 
     var initTimeOutCount = 0;
-    var ajaxRequest = function() {
+    var ajaxRequest = function () {
       $.ajax({
-          url: params.urlWS,
-          type: 'GET',
-          datatype: 'json',
-          tryCount: initTimeOutCount,
-          retryLimit: options.maxRetries,
-          timebeforeTA: options.maxRetriesTimeout,
-          timeout: options.ajaxTimeout, // timeOutArr[initTimeOutCount], //
-          crossDomain: true,
-          headers: {
-            "X-Okapi-Key": $.fn.resultLicense()
-          },
-          beforeSend: function() {
-            $(params.object).siblings('i').removeClass('hide');
-          },
-          success: function(data) {
-            var addressList = $.fn.retrieveAddressFromSerca(data, $(params.object)[0].id, options);
-            clearTimeout(timeOutId);
+        url: params.urlWS,
+        type: 'GET',
+        datatype: 'json',
+        tryCount: initTimeOutCount,
+        retryLimit: options.maxRetries,
+        timebeforeTA: options.maxRetriesTimeout,
+        timeout: options.ajaxTimeout, // timeOutArr[initTimeOutCount], //
+        crossDomain: true,
+        headers: {
+          "X-Okapi-Key": $.fn.resultLicense()
+        },
+        beforeSend: function () {
+          $(params.object).siblings('i').removeClass('hide');
+        },
+        success: function (data) {
+          var addressList = $.fn.retrieveAddressFromSerca(data, $(params.object)[0].id, options);
+          clearTimeout(timeOutId);
 
-            callback(addressList);
-          },
-          dataFilter: function(data) {
-            var datax = JSON.parse(data);
+          callback(addressList);
+        },
+        dataFilter: function (data) {
+          var datax = JSON.parse(data);
 
+          if ($(params.object)[0].id == "address_row3") {
 
-            if ($(params.object)[0].id == "address_row3" && params.numero_address_row4 !== "") {
-              for (var i = datax.reponse.adresse.length - 1; i >= 0; i--) {
-                if (datax.reponse.adresse[i].ligne4.numero !== params.numero_address_row4) {
-                  datax.reponse.adresse.splice(i, 1);
-                }
-              }
-            }
-            if ($(params.object)[0].id == "address_row3") {
+            var empty_adr_element = {
 
-              var empty_adr_element = {
-
-              };
-              datax.reponse.adresse.unshift(empty_adr_element);
-            }
-
-            return JSON.stringify(datax);
-          },
-          error: function(xhr, status) {
-            if (status == 'timeout') {
-              this.tryCount++;
-              initTimeOutCount++;
-              if (this.tryCount <= this.retryLimit) {
-
-                var newTimeOutDelay = parseInt(this.timebeforeTA + ((this.tryCount * 10) / 100 * 10000));
-                timeOutId = setTimeout(ajaxRequest, parseInt(newTimeOutDelay));
-              }
-              return;
-            }
+            };
+            datax.reponse.adresse.unshift(empty_adr_element);
           }
-        })
-        .always(function() {
+
+          return JSON.stringify(datax);
+        },
+        error: function (xhr, status) {
+          if (status == 'timeout') {
+            this.tryCount++;
+            initTimeOutCount++;
+            if (this.tryCount <= this.retryLimit) {
+
+              var newTimeOutDelay = parseInt(this.timebeforeTA + ((this.tryCount * 10) / 100 * 10000));
+              timeOutId = setTimeout(ajaxRequest, parseInt(newTimeOutDelay));
+            }
+            else {
+              $.fn.unlock_2_3_Form();
+              $.fn.unlock_4_5_Form();
+              $.fn.unlock_Bouton_Valider();
+            }
+            return;
+          }
+          else {
+            $.fn.unlock_2_3_Form();
+            $.fn.unlock_4_5_Form();
+            $.fn.unlock_Bouton_Valider();
+          }
+          return;
+        }
+      })
+        .always(function () {
           $(params.object).siblings('i').addClass('hide');
         });
     };
@@ -769,14 +772,14 @@ if (typeof jQuery === 'undefined') {
     ajaxRequest();
   };
 
-  $.fn.AjaxRetryMascadia = function(params) {
+  $.fn.AjaxRetryMascadia = function (params) {
 
-    var timeOutId = window.setTimeout(function() {}, 0);
+    var timeOutId = window.setTimeout(function () { }, 0);
     while (timeOutId--) {
       window.clearTimeout(timeOutId);
     }
     var initTimeOutCount = 0;
-    var ajaxRequest = function() {
+    var ajaxRequest = function () {
       $.ajax({
         url: params.urlWS,
         type: 'GET',
@@ -789,17 +792,17 @@ if (typeof jQuery === 'undefined') {
         headers: {
           "X-Okapi-Key": $.fn.resultLicense()
         },
-        beforeSend: function() {},
-        success: function(data) {
+        beforeSend: function () { },
+        success: function (data) {
           $.fn.retrieveAddressFromSercaMascadia(data, $(params.object)[0].id, options);
           clearTimeout(timeOutId);
 
         },
-        dataFilter: function(data) {
+        dataFilter: function (data) {
           var datax = JSON.parse(data);
           return JSON.stringify(datax);
         },
-        error: function(xhr, status) {
+        error: function (xhr, status) {
           if (status == 'timeout') {
             this.tryCount++;
 
@@ -820,62 +823,62 @@ if (typeof jQuery === 'undefined') {
   };
 
 
-  $.fn.AjaxRetryMailAuto = function(params, callback) {
+  $.fn.AjaxRetryMailAuto = function (params, callback) {
 
-    var timeOutId = window.setTimeout(function() {}, 0);
+    var timeOutId = window.setTimeout(function () { }, 0);
 
     while (timeOutId--) {
       window.clearTimeout(timeOutId);
     }
     var initTimeOutCount = 0;
-    var ajaxRequest = function() {
+    var ajaxRequest = function () {
       $.ajax({
-          url: params.urlWS,
-          type: 'GET',
-          datatype: 'json',
-          tryCount: initTimeOutCount,
-          retryLimit: options.maxRetries,
-          timebeforeTA: options.maxRetriesTimeout,
-          timeout: options.ajaxTimeout,
-          crossDomain: true,
-          headers: {
-            "X-Okapi-Key": $.fn.resultLicense()
-          },
-          beforeSend: function() {
-            $(params.object).siblings('i').removeClass('hide');
-          },
-          success: function(data) {
-            var addressList = $.fn.retrieveAddressFromSerca(data, $(params.object)[0].id, options);
-            clearTimeout(timeOutId);
-            callback(addressList);
-          },
-          dataFilter: function(data) {
-            var datax = JSON.parse(data);
-            return JSON.stringify(datax);
-          },
-          error: function(xhr, status) {
-            if (status == 'timeout') {
-              this.tryCount++;
+        url: params.urlWS,
+        type: 'GET',
+        datatype: 'json',
+        tryCount: initTimeOutCount,
+        retryLimit: options.maxRetries,
+        timebeforeTA: options.maxRetriesTimeout,
+        timeout: options.ajaxTimeout,
+        crossDomain: true,
+        headers: {
+          "X-Okapi-Key": $.fn.resultLicense()
+        },
+        beforeSend: function () {
+          $(params.object).siblings('i').removeClass('hide');
+        },
+        success: function (data) {
+          var addressList = $.fn.retrieveAddressFromSerca(data, $(params.object)[0].id, options);
+          clearTimeout(timeOutId);
+          callback(addressList);
+        },
+        dataFilter: function (data) {
+          var datax = JSON.parse(data);
+          return JSON.stringify(datax);
+        },
+        error: function (xhr, status) {
+          if (status == 'timeout') {
+            this.tryCount++;
 
-              if (this.tryCount <= this.retryLimit) {
-                $("#erreur_information").remove();
-                var newTimeOutDelay = parseInt(this.timebeforeTA + ((this.tryCount * 10) / 100 * 10000));
-                timeOutId = setTimeout(ajaxRequest, parseInt(newTimeOutDelay));
-              }
-              return;
+            if (this.tryCount <= this.retryLimit) {
+              $("#erreur_information").remove();
+              var newTimeOutDelay = parseInt(this.timebeforeTA + ((this.tryCount * 10) / 100 * 10000));
+              timeOutId = setTimeout(ajaxRequest, parseInt(newTimeOutDelay));
             }
-
-
+            return;
           }
-        })
-        .always(function() {
+
+
+        }
+      })
+        .always(function () {
           $(params.object).siblings('i').addClass('hide');
         });
     };
     ajaxRequest();
   };
 
-  $.fn.copyToClipboard = function(element, full) {
+  $.fn.copyToClipboard = function (element, full) {
     var $temp = $("<textarea>");
     $("body").append($temp);
     if (full) {
@@ -886,8 +889,8 @@ if (typeof jQuery === 'undefined') {
     document.execCommand("copy");
     $temp.remove();
   };
- 
-  $.fn.findWord = function(word) {
+
+  $.fn.findWord = function (word) {
     var words = ['APPT', 'ESC'];
     var final_words = ['APPARTEMENT', 'ESCALIER'];
     var res = words.indexOf(word);
@@ -897,7 +900,7 @@ if (typeof jQuery === 'undefined') {
     return "";
   };
 
-  $.fn.checkExtend = function(field) {
+  $.fn.checkExtend = function (field) {
     var str = field.val().toUpperCase();
     var new_str = "";
     var arrstr = str.split(" ");
@@ -915,7 +918,7 @@ if (typeof jQuery === 'undefined') {
     return new_str;
   };
 
-  $.fn.inArray = function(target, array) {
+  $.fn.inArray = function (target, array) {
     for (var i = 0; i < array.length; i++) {
       if (array[i] === target) {
         return true;
@@ -928,8 +931,8 @@ if (typeof jQuery === 'undefined') {
    * Initialise le plugin pour l'affichage dans une page html.
    * @param $params
    */
-  $.fn.sercaForm = function($params) {
-    this.each(function() {
+  $.fn.sercaForm = function ($params) {
+    this.each(function () {
 
       var $this = $(this);
 
@@ -983,7 +986,7 @@ if (typeof jQuery === 'undefined') {
 
       $this.append($.fn.getHtmlForm(options));
 
-      $(".form-control").on("change input", function(event) {
+      $(".form-control").on("change input", function (event) {
         if (!event.target.value) {
           event.target.classList.add("empty");
         } else {
@@ -1002,16 +1005,16 @@ if (typeof jQuery === 'undefined') {
 
 
       if (options.upperCaseFields) {
-        $('form').find("input[type=input], input[type=password], textarea").each(function() {
+        $('form').find("input[type=input], input[type=password], textarea").each(function () {
 
-          if($(this).attr('id') !== "address_row8"){
-                      $(this).addClass("uppercase");
-                    }
+          if ($(this).attr('id') !== "address_row8") {
+            $(this).addClass("uppercase");
+          }
         });
       }
 
-      $.fn.lockForm = function() {
-        $('form').find("input[type=input], input[type=password], textarea").each(function() {
+      $.fn.lockForm = function () {
+        $('form').find("input[type=input], input[type=password], textarea").each(function () {
           if (!$.fn.inArray($(this)[0].id.toString(), ["address_row6", "address_row1_first_name", "address_row1_last_name", "address_row1", "address_row8", "address_row9"])) {
             $(this).prop('disabled', true);
           }
@@ -1028,10 +1031,8 @@ if (typeof jQuery === 'undefined') {
         });
       };
 
-      $.fn.unlockControle = function() {
-        if ($.trim($("#address_row4").val()).length !== 0 && $.trim($("#address_row6").val()).length !== 0 &&
-          $.trim($("#address_row1_last_name").val()).length !== 0 &&
-          $.trim($("#address_row1_first_name").val()).length !== 0) {
+      $.fn.unlockControle = function () {
+        if ($.trim($("#address_row4").val()).length !== 0 && $.trim($("#address_row6").val()).length !== 0) {
           $("#controler_votre_adresse").prop('disabled', false);
         } else {
           $("#controler_votre_adresse").prop('disabled', true);
@@ -1040,13 +1041,13 @@ if (typeof jQuery === 'undefined') {
 
       $("#address_row1_last_name,#address_row1_first_name").on("change input", $.fn.unlockControle);
 
-      $.fn.unlockForm = function() {
-        $('form').find("input[type=input], input[type=password], textarea").each(function() {
+      $.fn.unlockForm = function () {
+        $('form').find("input[type=input], input[type=password], textarea").each(function () {
           $(this).prop('disabled', false);
         });
       };
-      $.fn.unlock_4_5_Form = function() {
-        $('form').find("input[type=input], input[type=password], textarea").each(function() {
+      $.fn.unlock_4_5_Form = function () {
+        $('form').find("input[type=input], input[type=password], textarea").each(function () {
           $("#address_row4").prop('disabled', false);
           $("#address_row5").prop('disabled', false);
         });
@@ -1055,9 +1056,9 @@ if (typeof jQuery === 'undefined') {
 
 
 
-      $.fn.unlock_Bouton_Valider = function() {
+      $.fn.unlock_Bouton_Valider = function () {
 
-        $('form').find("input[type=input], input[type=password], textarea").each(function() {
+        $('form').find("input[type=input], input[type=password], textarea").each(function () {
           $("#btn_validate").prop('disabled', false);
         });
         if ($.trim($("#address_row1_last_name").val()).length !== 0 && $.trim($("#address_row1_first_name").val()).length !== 0 && $.trim($("#address_row6").val()).length !== 0 && $.trim($("#address_row4").val()).length !== 0) {
@@ -1066,13 +1067,13 @@ if (typeof jQuery === 'undefined') {
       };
 
 
-      $.fn.lock_Bouton_Valider = function() {
-        $('form').find("input[type=input], input[type=password], textarea").each(function() {
+      $.fn.lock_Bouton_Valider = function () {
+        $('form').find("input[type=input], input[type=password], textarea").each(function () {
           $("#btn_validate").prop('disabled', true);
         });
       };
-      $.fn.unlock_2_3_Form = function() {
-        $('form').find("input[type=input], input[type=password], textarea").each(function() {
+      $.fn.unlock_2_3_Form = function () {
+        $('form').find("input[type=input], input[type=password], textarea").each(function () {
           $("#address_row2").prop('disabled', false);
           $("#address_row3").prop('disabled', false);
         });
@@ -1090,7 +1091,7 @@ if (typeof jQuery === 'undefined') {
         $("#address-autocomplete-form").css("background-color", options.backColor);
       }
 
-      $('#btn_clear').click(function() {
+      $('#btn_clear').click(function () {
 
         $.fn.updateFinal(true);
         $.fn.lock_Bouton_Valider();
@@ -1101,37 +1102,37 @@ if (typeof jQuery === 'undefined') {
         }
       });
 
-      $('input[type=radio]').change(function() {
+      $('input[type=radio]').change(function () {
         $.fn.updateFinal();
       });
       if (options.oneFieldAddressRow1) {
-        $("#address_row1").change(function() {
+        $("#address_row1").change(function () {
           $.fn.updateFinal();
         });
       } else {
-        $("#address_row1_first_name").change(function() {
+        $("#address_row1_first_name").change(function () {
           $.fn.updateFinal();
         });
-        $("#address_row1_last_name").change(function() {
+        $("#address_row1_last_name").change(function () {
           $.fn.updateFinal();
         });
       }
-      $("#address_row2").change(function() {
+      $("#address_row2").change(function () {
         $.fn.updateFinal();
       });
-      $("#address_row3").change(function() {
+      $("#address_row3").change(function () {
         $.fn.updateFinal();
       });
-      $("#address_row5").change(function() {
+      $("#address_row5").change(function () {
         $.fn.updateFinal();
       });
 
       $.widget("ui.autocomplete", $.ui.autocomplete, {
-        _renderMenu: function(ul, items) {
+        _renderMenu: function (ul, items) {
           var footer_menu_html = '<li class="ui-state-disabled footer-autocomplete" id="SNAFooter"><a class="ui-state-disabled" target="_blank"><img class="ui-state-disabled" src="images/powered-by-laposte-on-white.png" alt="Avec La Poste"/></a></li>';
           var self = this;
           if (undefined !== items) {
-            $.each(items, function(index, item) {
+            $.each(items, function (index, item) {
               self._renderItemData(ul, item);
               if (index + 1 === items.length) {
                 $(footer_menu_html).appendTo(ul).data("ui-autocomplete-item", item);
@@ -1139,7 +1140,7 @@ if (typeof jQuery === 'undefined') {
             });
           }
         },
-        _renderItemData: function(ul, item) {
+        _renderItemData: function (ul, item) {
           $(item.highlightedResult).appendTo(ul).data("ui-autocomplete-item", item);
         }
       });
@@ -1154,7 +1155,7 @@ if (typeof jQuery === 'undefined') {
       $("#address_row6").autocomplete({
         minLength: options.minLengthBeforeCall,
         autoFocus: true,
-        source: function(request, callback) {
+        source: function (request, callback) {
           var params = {
             object: $('#address_row6'),
             result: [],
@@ -1163,7 +1164,7 @@ if (typeof jQuery === 'undefined') {
           var addressList = $.fn.AjaxRetry(params, callback);
           callback(addressList);
         },
-        select: function(event, ui) {
+        select: function (event, ui) {
           $("#address_row6").val(ui.item.address_row6).change()
             .attr("insee_code", ui.item.insee_code)
             .attr("libelle_acheminement", ui.item.libelle_acheminement);
@@ -1171,15 +1172,16 @@ if (typeof jQuery === 'undefined') {
           $("#address_row5").val(ui.item.address_row5).change();
           if (options.displayAddressLabel) {
             $.fn.updateFinal();
+            $.fn.unlock_2_3_Form();
             $.fn.unlock_4_5_Form();
-
+            $.fn.lock_Bouton_Valider();
           }
           return false;
         },
-        open: function() {
+        open: function () {
           $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
         },
-        close: function() {
+        close: function () {
           $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
         }
       });
@@ -1194,7 +1196,7 @@ if (typeof jQuery === 'undefined') {
       $("#address_row5").autocomplete({
         minLength: options.minLengthBeforeCall,
         autoFocus: true,
-        source: function(request, callback) {
+        source: function (request, callback) {
           var params = {
             object: $('#address_row6'),
             result: [],
@@ -1203,7 +1205,7 @@ if (typeof jQuery === 'undefined') {
           var addressList = $.fn.AjaxRetry(params, callback);
           callback(addressList);
         },
-        select: function(event, ui) {
+        select: function (event, ui) {
           $("#address_row6").val(ui.item.address_row6).change()
             .attr("insee_code", ui.item.insee_code)
             .attr("libelle_acheminement", ui.item.libelle_acheminement);
@@ -1216,10 +1218,10 @@ if (typeof jQuery === 'undefined') {
           }
           return false;
         },
-        open: function() {
+        open: function () {
           $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
         },
-        close: function() {
+        close: function () {
           $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
         }
       });
@@ -1234,7 +1236,7 @@ if (typeof jQuery === 'undefined') {
       $("#address_row4").autocomplete({
         minLength: options.minLengthBeforeCall,
         autoFocus: true,
-        source: function(request, callback) {
+        source: function (request, callback) {
           var params = {
             object: $('#address_row4'),
             result: [],
@@ -1243,7 +1245,7 @@ if (typeof jQuery === 'undefined') {
           var addressList = $.fn.AjaxRetry(params, callback);
           callback(addressList);
         },
-        select: function(event, ui) {
+        select: function (event, ui) {
           $("#address_row4").attr("voie", ui.item.justVoieaddress_row4).attr("numext", ui.item.numext);
           $("#address_row4").val($.trim(ui.item.numext + " " + ui.item.justVoieaddress_row4));
           $("#address_row5").val(ui.item.address_row5).change();
@@ -1258,17 +1260,17 @@ if (typeof jQuery === 'undefined') {
 
 
         },
-        open: function() {
+        open: function () {
           $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
         },
-        close: function() {
+        close: function () {
           $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
           if (options.displayAddressLabel) {
             $.fn.updateFinal();
             $.fn.unlock_2_3_Form();
           }
         },
-        change: function() {
+        change: function () {
 
           if (options.displayAddressLabel) {
             $.fn.updateFinal();
@@ -1286,7 +1288,7 @@ if (typeof jQuery === 'undefined') {
       $("#address_row3").autocomplete({
         minLength: options.minLengthBeforeCall,
         autoFocus: true,
-        source: function(request, callback) {
+        source: function (request, callback) {
           var params = {
             object: $('#address_row3'),
             numero_address_row4: $("#address_row4").attr("numext"),
@@ -1296,7 +1298,7 @@ if (typeof jQuery === 'undefined') {
           var addressList = $.fn.AjaxRetry(params, callback);
           callback(addressList);
         },
-        select: function(event, ui) {
+        select: function (event, ui) {
           if (ui.item.insee_code !== "-1") {
             $("#address_row3").val(ui.item.address_row3).attr("insee_code", ui.item.insee_code).change();
             $("#address_row4").val(ui.item.address_row4).change();
@@ -1312,16 +1314,16 @@ if (typeof jQuery === 'undefined') {
             $("#address_row2").focus();
           }
         },
-        open: function() {
+        open: function () {
           $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
           if (options.displayAddressLabel) {
             $.fn.updateFinal();
           }
         },
-        close: function() {
+        close: function () {
           $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
         },
-        change: function() {
+        change: function () {
           if (options.displayAddressLabel) {
             $.fn.updateFinal();
           }
@@ -1338,7 +1340,7 @@ if (typeof jQuery === 'undefined') {
       $("#address_row8").autocomplete({
         minLength: options.minLengthBeforeCall,
         autoFocus: true,
-        source: function(request, callback) {
+        source: function (request, callback) {
           var params = {
             object: $('#address_row8'),
             result: [],
@@ -1347,7 +1349,7 @@ if (typeof jQuery === 'undefined') {
           var addressList = $.fn.AjaxRetryMailAuto(params, callback);
           callback(addressList);
         },
-        select: function(event, ui) {
+        select: function (event, ui) {
 
           $("#address_row8").val(ui.item.address_row8).change();
           if (options.displayAddressLabel) {
@@ -1355,10 +1357,10 @@ if (typeof jQuery === 'undefined') {
           }
           return false;
         },
-        open: function() {
+        open: function () {
           $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
         },
-        close: function() {
+        close: function () {
           $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
           if ($("#address_row8").val().length > 0) {
             $("#address_row8").autocomplete({
@@ -1378,7 +1380,7 @@ if (typeof jQuery === 'undefined') {
        * @returns {*}
        * @private
        */
-      $("#controler_votre_adresse").click(function() {
+      $("#controler_votre_adresse").click(function () {
         $.fn.AjaxRetryMascadia({
           object: $('#controler_votre_adresse'),
           result: [],
@@ -1404,13 +1406,25 @@ if (typeof jQuery === 'undefined') {
       });
 
       /**
+       * LIGNE 3 ONBLUR
+       * @param ul
+       * @param item
+       * @returns {*}
+       * @private
+       */
+      $("#address_row3").blur(function () {
+        $.fn.unlockControle();
+        $.fn.updateFinal();
+      });
+
+      /**
        * LIGNE 4 ONBLUR
        * @param ul
        * @param item
        * @returns {*}
        * @private
        */
-      $("#address_row4").blur(function() {
+      $("#address_row4").blur(function () {
         $.fn.unlockControle();
         $.fn.updateFinal();
       });
@@ -1422,7 +1436,7 @@ if (typeof jQuery === 'undefined') {
        * @returns {*}
        * @private
        */
-      $("#address_row6").blur(function() {
+      $("#address_row6").blur(function () {
         $.fn.unlockControle();
         $.fn.updateFinal();
       });
@@ -1432,7 +1446,7 @@ if (typeof jQuery === 'undefined') {
        * @returns {*}
        * @private
        */
-      $("input:checkbox").on('click', function() {
+      $("input:checkbox").on('click', function () {
         var $box = $(this);
         if ($box.is(":checked")) {
           var group = "input:checkbox[name='" + $box.attr("name") + "']";

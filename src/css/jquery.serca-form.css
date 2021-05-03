@@ -73,7 +73,7 @@
 }
 
 .form-control.empty:not(:focus):not(:disabled){
-	background-color: #f3f3f3;
+	background-color: #fff;
 }
 
 
@@ -249,7 +249,7 @@ body {
     flex-direction: column;
     min-width: 496px;
     min-height: 100vh;
-    height: 100vh;
+    /* height: 100vh; */
     background-attachment: fixed;
     background-position: center center;
     background-size: cover;
